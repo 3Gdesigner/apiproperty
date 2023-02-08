@@ -28,7 +28,7 @@ class StoreBrokerRequest extends FormRequest
             "address"=>["required","max:255"],
             "city"=>["required"],
             "zip_code"=>["required"],
-            "phone_number"=>["required","numeric","digits:13"],
+            "phone_number"=>["required","numeric"],
             "logo_path"=>["required"],
         ];
     }

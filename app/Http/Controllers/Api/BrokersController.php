@@ -28,7 +28,7 @@ class BrokersController extends Controller
      */
     public function store(StoreBrokerRequest $request)
     {
-        $request->validate();
+        ///$request->validate();
 
         $broker = Broker::create([
             "name" => $request->name,

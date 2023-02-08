@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("address")->required();
             $table->string('city')->required();
             $table->string("zip_code")->required();
-            $table->integer('phone_number')->required();
+            $table->unsignedInteger('phone_number')->required();
             $table->string("logo_path")->required();
             
             $table->timestamps();

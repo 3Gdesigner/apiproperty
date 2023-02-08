@@ -16,6 +16,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('property_characteristics', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('property')->unique();
             $table->float('price')->required();
             $table->integer('badrooms')->required();
