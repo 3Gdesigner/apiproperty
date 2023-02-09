@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string("address")->required();
             $table->string('city')->required();
             $table->string("zip_code")->required();
-            $table->unsignedInteger('phone_number')->required();
+            $table->bigInteger('phone_number')->required();
             $table->string("logo_path")->required();
-            
+
             $table->timestamps();
 
             $table->unique(['name','zip_code','phone_number']);

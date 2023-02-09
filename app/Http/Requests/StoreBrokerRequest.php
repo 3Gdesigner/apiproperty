@@ -24,12 +24,17 @@ class StoreBrokerRequest extends FormRequest
     public function rules()
     {
         return [
-            "name"=>["required","unique:brokers","max:255"],
-            "address"=>["required","max:255"],
-            "city"=>["required"],
-            "zip_code"=>["required"],
-            "phone_number"=>["required","numeric"],
-            "logo_path"=>["required"],
+            "name"=>[$this->isPostRequest(),"unique:brokers","max:255"],
+            "address"=>[$this->isPostRequest(),"max:255"],
+            "city"=>[$this->isPostRequest()],
+            "zip_code"=>[$this->isPostRequest()],
+            "phone_number"=>[$this->isPostRequest(),"numeric","digits_between:9,15"],
+            "logo_path"=>[$this->isPostRequest()],
         ];
+    }
+
+    private function isPostRequest()
+    {
+        return request()->isMethod('post') ? 'required':'sometimes';
     }
 }
