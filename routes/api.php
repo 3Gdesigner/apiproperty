@@ -29,7 +29,7 @@ Route::get('/brokers/{broker}',[BrokersController::class,'show']);
 
 
 //Protected Route
-Route::group(['middleware'=>['auth::sanctum']],function(){
+Route::group( ['middleware' => ['auth:sanctum']],function(){
     Route::apiResource("/brokers",BrokersController::class)->only(['store','update','destroy']);
-    Route::post('logout',[AuthController::class,'logout']);
+    Route::post('/logout',[AuthController::class,'logout']);
 });
