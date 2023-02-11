@@ -32,6 +32,7 @@ class PropertiesController extends Controller
     public function store(StorePropertiesRequest $request)
     {
         $property= Property::create([
+            "broker"=>$request->broker,
             "address"=>  $request->address,
             "listing_type"=>  $request->listing_type,
             "city"=>  $request->city,
@@ -39,23 +40,19 @@ class PropertiesController extends Controller
             "description"=>  $request->description,
             "build_year"=>  $request->build_year
         ]);
-        $property->charaterisc()->create([
+
+        $property->charateristic()->create([
             'property'=>$property->id,
-            'address'=>"",
-            'listing_type'=>"",
-            'city'=>'',
-            'zip_code'=>'',
-            'description'=>'',
-            'build_year'=>''.
-            'build_year'=>''.
-            'build_year'=>''.
-            'build_year'=>''.
-            'build_year'=>''.
-            'build_year'=>''.
-            'build_year'=>''.
+            'price'=>$request->price,
+            'bedrooms'=>$request->bedrooms,
+            'bathrooms'=>$request->bathrooms,
+            'sqft'=>$request->sqft,
+            'sqft_price'=>$request->sqft_price,
+            'property_type'=>$request->property_type,
+            'status'=>$request->status
         ]);
 
-        
+
         return new PropertiesResource($property);
     }
 
@@ -63,11 +60,11 @@ class PropertiesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return PropertiesResource
      */
-    public function show($id)
+    public function show(Property $property)
     {
-        //
+        return new PropertiesResource($property);
     }
 
     /**
@@ -75,11 +72,14 @@ class PropertiesController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return PropertiesResource
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Property $property)
     {
-        //
+       $property->update([$request->only([
+               'address','listing_type','city','zip_code','description','build_year'
+           ])]);
+       return new PropertiesResource($property);
     }
 
     /**
@@ -88,8 +88,13 @@ class PropertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Property $property)
     {
-        //
+        $property->delete();
+
+        return response()->json([
+            'success'=>true,
+            'message'=>'Properties as been deletede sucessfuly!'
+        ]);
     }
 }

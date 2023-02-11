@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyCharacteristic extends Model
 {
+    protected $table="property_characteristics";
     use HasFactory;
 
     protected $fillable=

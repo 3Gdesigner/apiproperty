@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
+    protected $table = "properties";
+
     use HasFactory;
 
     protected $fillable=[
-        'broker','address','listing_type','zip_code','description','build_year'
+        'broker','address','city','listing_type','zip_code','description','build_year'
     ];
 
-    public function charateristic()
+    public function charaterisc()
     {
         return $this->hasOne(PropertyCharacteristic::class,"property","id");
     }
