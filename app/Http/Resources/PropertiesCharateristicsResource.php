@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BrokerResourece extends JsonResource
+class PropertiesCharateristicsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,13 +15,13 @@ class BrokerResourece extends JsonResource
     public function toArray($request)
     {
         return [
-            "id" => $this->id,
-            "name" => $this->name,
-            "address" => $this->address,
-            "city" => $this->city,
-            "zip_code" => $this->zip_code,
-            "phone_number" => $this->phone_number,
-            "logo_path" => $this->logo_path,
+            'price'=>$this->price,
+            'badrooms'=>$this->badrooms,
+            'bathrooms'=>$this->bathrooms,
+            'sqft'=>$this->sqft,
+            'price_sqft'=>$this->price_sqft,
+            'property_type'=>$this->property_type,
+            'status'=>$this->status,
         ];
     }
 }

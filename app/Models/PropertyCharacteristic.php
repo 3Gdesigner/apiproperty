@@ -11,6 +11,6 @@ class PropertyCharacteristic extends Model
 
     protected $fillable=
     [
-      'property','price','badrooms','bathrooms','sqft','price_sqft','property_type', 'status'
+      'property','price','bedrooms','bathrooms','sqft','price_sqft','property_type', 'status'
     ];
 }

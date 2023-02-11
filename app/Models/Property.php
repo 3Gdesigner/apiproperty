@@ -12,4 +12,11 @@ class Property extends Model
     protected $fillable=[
         'broker','address','listing_type','zip_code','description','build_year'
     ];
+
+    public function charateristic()
+    {
+        return $this->hasOne(PropertyCharacteristic::class,"property","id");
+    }
+
+
 }
