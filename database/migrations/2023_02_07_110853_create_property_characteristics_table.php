@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('property')->unique();
             $table->float('price')->required();
-            $table->integer('badrooms')->required();
+            $table->integer('bedrooms')->required();
             $table->integer('bathrooms')->required();
             $table->float('sqft')->required();
             $table->float('price_sqft')->required();
